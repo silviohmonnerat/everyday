@@ -1,17 +1,27 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Archives') }}
-        </h2>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('archives.create') }}">Add Product</a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __('Archives') }}
+                </h2>
+
+                <span class="hidden sm:block ml-3">
+                    <a class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-green-400 hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('archives.create') }}">
+                        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                        {{ __('Add Archive') }}
+                    </a>
+                </span>
+            </div>
         </div>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-6 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -19,36 +29,43 @@
                         </div>
                     @endif
 
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>ID</th>
-                            <th>title</th>
-                            <th>Content</th>
-                            <th width="280px">Actions</th>
-                        </tr>
-                        @foreach ($archives as $archive)
+                    <table class="w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
                             <tr>
-                                <td>{{ $archive->id }}</td>
-                                <td>{{ $product->title }}</td>
-                                <td>{{ $product->content }}</td>
-                                <td>
-                                    <form action="{{ route('archives.destroy', $archive->id) }}" method="POST">
-
-                                        <a class="btn btn-info" href="{{ route('archives.show',$archive->id) }}">Show</a>
-
-                                        <a class="btn btn-primary" href="{{ route('archives.edit',$archive->id) }}">Edit</a>
-
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Catalogue Number</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">title</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sound type</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time Of Day</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($archives as $archive)
+                                <tr class="transition duration-150 ease-in-out">
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $archive->catalogue_number }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $archive->title }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $archive->sound_type }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $archive->content }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $archive->time_of_day }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <form action="{{ route('archives.destroy', $archive->id) }}" method="POST">
+                                            <a class="btn btn-info" href="{{ route('archives.show',$archive->id) }}">Show</a>
+                                            <a class="btn btn-primary" href="{{ route('archives.edit',$archive->id) }}">Edit</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
 
                     {!! $archives->links() !!}
+
                 </div>
             </div>
         </div>

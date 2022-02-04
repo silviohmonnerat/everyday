@@ -25,10 +25,10 @@
                         <div class="mt-4">
                             <x-label for="sound_type" :value="__('Sound type')" />
                             <x-select name="sound_type" id="sound_type" class="block mt-1 w-full" :value="old('sound_type')" required autofocus>
-                                <option>Select</option>
-                                <option>Field Recording</option>
-                                <option>Composition (Mixtape, DJ sets, etc.)</option>
-                                <option>Audio sample from media</option>
+                                <option value="">Select</option>
+                                <option value="Field Recording" :value="old('sound_type')">Field Recording</option>
+                                <option value="Composition (Mixtape, DJ sets, etc.)" :value="old('sound_type')">Composition (Mixtape, DJ sets, etc.)</option>
+                                <option value="Audio sample from media" :value="old('sound_type')">Audio sample from media</option>
                             </x-select>
                         </div>
 
@@ -36,11 +36,11 @@
                         <div class="mt-4">
                             <x-label for="content" :value="__('Content')" />
                             <x-select name="content" id="content" class="block mt-1 w-full" :value="old('content')" required autofocus>
-                                <option>Select</option>
-                                <option>Sound-only</option>
-                                <option>Videos</option>
-                                <option>Text</option>
-                                <option>Images</option>
+                                <option value="">Select</option>
+                                <option value="Sound-only">Sound-only</option>
+                                <option value="Videos">Videos</option>
+                                <option value="Text">Text</option>
+                                <option value="Images">Images</option>
                             </x-select>
                         </div>
 
@@ -54,11 +54,11 @@
                         <div class="mt-4">
                             <x-label for="season" :value="__('Season')" />
                             <x-select name="season" id="season" class="block mt-1 w-full" :value="old('season')" required autofocus>
-                                <option>Select</option>
-                                <option>Spring</option>
-                                <option>Summer</option>
-                                <option>Fall</option>
-                                <option>Winter</option>
+                                <option value="">Select</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Summer">Summer</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Winter">Winter</option>
                             </x-select>
                         </div>
 
@@ -66,13 +66,13 @@
                         <div class="mt-4">
                             <x-label for="time_of_day" :value="__('Time Of Day')" />
                             <x-select name="time_of_day" id="time_of_day" class="block mt-1 w-full" :value="old('time_of_day')" required autofocus>
-                                <option>Select</option>
-                                <option>Dawn</option>
-                                <option>Morning</option>
-                                <option>Afternoon</option>
-                                <option>Evening</option>
-                                <option>Dusk</option>
-                                <option>Night</option>
+                                <option value="">Select</option>
+                                <option value="Dawn">Dawn</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                                <option value="Dusk">Dusk</option>
+                                <option value="Night">Night</option>
                             </x-select>
                         </div>
 
@@ -80,11 +80,11 @@
                         <div class="mt-4">
                             <x-label for="type_of_location" :value="__('Type of location')" />
                             <x-select name="type_of_location" id="type_of_location" class="block mt-1 w-full" :value="old('type_of_location')" required autofocus>
-                                <option>Select</option>
-                                <option>Iran</option>
-                                <option>Within/beyond geographical border</option>
-                                <option>Diasporic</option>
-                                <option>Historical</option>
+                                <option value="">Select</option>
+                                <option value="Iran">Iran</option>
+                                <option value="Within/beyond geographical border">Within/beyond geographical border</option>
+                                <option value="Diasporic">Diasporic</option>
+                                <option value="Historical">Historical</option>
                             </x-select>
                         </div>
 
@@ -141,10 +141,10 @@
                         <div class="mt-4">
                             <x-label for="device_recorder" :value="__('Device/Recorder')" />
                             <x-select name="device_recorder" id="device_recorder" class="block mt-1 w-full" :value="old('device_recorder')" required autofocus>
-                                <option>Select</option>
-                                <option>Professional Recorders </option>
-                                <option>Smartphones</option>
-                                <option>Other</option>
+                                <option value="">Select</option>
+                                <option value="Professional Recorders">Professional Recorders</option>
+                                <option value="Smartphones">Smartphones</option>
+                                <option value="Other">Other</option>
                             </x-select>
                         </div>
 
@@ -152,10 +152,10 @@
                         <div class="mt-4">
                             <x-label for="format_quality" :value="__('Format/Quality')" />
                             <x-select name="format_quality" id="format_quality" class="block mt-1 w-full" :value="old('format_quality')" required autofocus>
-                                <option>Select</option>
-                                <option>compressed low-quality</option>
-                                <option>compressed high-quality</option>
-                                <option>uncompressed</option>
+                                <option value="">Select</option>
+                                <option value="compressed low-quality">compressed low-quality</option>
+                                <option value="compressed high-quality">compressed high-quality</option>
+                                <option value="uncompressed">uncompressed</option>
                             </x-select>
                         </div>
 
@@ -163,11 +163,11 @@
                         <div class="mt-4">
                             <x-label for="access_and_license" :value="__('Access and License')" />
                             <x-select name="access_and_license" id="access_and_license" class="block mt-1 w-full" :value="old('access_and_license')" required autofocus>
-                                <option>Select</option>
-                                <option>Download directly with the option of donation (via paypal)</option>
-                                <option>Download after purchase (external link to bandcamp, etc.) </option>
-                                <option>Requesting it through webforms for archival materials</option>
-                                <option>Listen-only or preview</option>
+                                <option value="">Select</option>
+                                <option value="Download directly with the option of donation (via paypal)">Download directly with the option of donation (via paypal)</option>
+                                <option value="Download after purchase (external link to bandcamp, etc.)">Download after purchase (external link to bandcamp, etc.)</option>
+                                <option value="Requesting it through webforms for archival materials">Requesting it through webforms for archival materials</option>
+                                <option value="Listen-only or preview">Listen-only or preview</option>
                             </x-select>
                         </div>
 

@@ -31,7 +31,7 @@ class Archive extends Model
         'length',
         'device_recorder',
         'format_quality',
-        'access_andLicense',
+        'access_and_license',
         'tags',
         'media',
         'user_id',

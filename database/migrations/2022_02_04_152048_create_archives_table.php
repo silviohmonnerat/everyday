@@ -29,7 +29,7 @@ class CreateArchivesTable extends Migration
             $table->string('length');
             $table->string('device_recorder');
             $table->string('format_quality');
-            $table->string('access_andLicense');
+            $table->string('access_and_license');
             $table->string('tags');
             $table->string('media');
             $table->integer('user_id')->unsigned();

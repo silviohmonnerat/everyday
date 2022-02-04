@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Http\Requests\ArchiveRequest;
 use App\Models\Archive;
 
 class ArchiveController extends Controller
@@ -28,7 +29,7 @@ class ArchiveController extends Controller
     {
         $archives = Archive::latest()->paginate(5);
 
-        return view('archives.index', compact('archives'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('archives.index', compact('archives'));
     }
 
     /**
@@ -47,57 +48,21 @@ class ArchiveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArchiveRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'sound_type' => 'required',
-            'date' => 'required',
-            'season' => 'required',
-            'time_of_day' => 'required',
-            'type_of_location' => 'required',
-            'location' => 'required',
-            'recordist' => 'required',
-            'artist' => 'required',
-            'length' => 'required',
-            'device_recorder' => 'required',
-            'format_quality' => 'required',
-            'access_andLicense' => 'required',
-            'tags' => 'required',
-            'media' => 'required',
-        ]);
-
         DB::beginTransaction();
 
         try {
             $user = Auth::user();
 
-            $archive = new Archive([
-                'title' => $request->title,
-                'content' => $request->content,
-                'catalogue_number' => str_pad(rand(0, pow(10, 4)-1), 4, '0', STR_PAD_LEFT),
-                'sound_type' => $request->sound_type,
-                'date' => $request->date,
-                'season' => $request->season,
-                'time_of_day' => $request->time_of_day,
-                'type_of_location' => $request->type_of_location,
-                'location' => $request->location,
-                'recordist' => $request->recordist,
-                'artist' => $request->artist,
-                'length' => $request->length,
-                'device_recorder' => $request->device_recorder,
-                'format_quality' => $request->format_quality,
-                'access_andLicense' => $request->access_andLicense,
-                'tags' => $request->tags,
-                'media' => $request->media,
-                'user_id' => $user->id
-            ]);
+            $archive = $request->all();
 
+            $archive['catalogue_number'] = str_pad(rand(0, pow(10, 4)-1), 4, '0', STR_PAD_LEFT);
+
+            $archive = new Archive($archive);
             $user->archives()->save($archive);
 
             DB::commit();
-
             return redirect()->route('archives.index')
                              ->with('success','Archive created successfully.');
         } catch (\Exception $e) {
@@ -138,27 +103,8 @@ class ArchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Archive $archive)
+    public function update(ArchiveRequest $request, Archive $archive)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'sound_type' => 'required',
-            'date' => 'required',
-            'season' => 'required',
-            'time_of_day' => 'required',
-            'type_of_location' => 'required',
-            'location' => 'required',
-            'recordist' => 'required',
-            'artist' => 'required',
-            'length' => 'required',
-            'device_recorder' => 'required',
-            'format_quality' => 'required',
-            'access_andLicense' => 'required',
-            'tags' => 'required',
-            'media' => 'required',
-        ]);
-
         DB::beginTransaction();
 
         try {
