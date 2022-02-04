@@ -27,13 +27,13 @@
                         <!-- Title -->
                         <div>
                             <x-label for="title" :value="__('Title')" />
-                            <x-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{ $archive->title }}" :value="old('title')" required autofocus />
+                            <x-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{ $archive->title }}" required autofocus />
                         </div>
 
                         <!-- Sound type -->
                         <div class="mt-4">
                             <x-label for="sound_type" :value="__('Sound type')" />
-                            <x-select name="sound_type" id="sound_type" class="block mt-1 w-full" :value="old('sound_type')" required autofocus>
+                            <x-select name="sound_type" id="sound_type" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Field Recording" {{ $archive->sound_type == 'Field Recording' ? "selected" : "" }}>Field Recording</option>
                                 <option valeu="Composition (Mixtape, DJ sets, etc.)" {{ $archive->sound_type == 'Composition (Mixtape, DJ sets, etc.)' ? "selected" : "" }}>Composition (Mixtape, DJ sets, etc.)</option>
@@ -44,7 +44,7 @@
                         <!-- Content -->
                         <div class="mt-4">
                             <x-label for="content" :value="__('Content')" />
-                            <x-select name="content" id="content" class="block mt-1 w-full" :value="old('content')" required autofocus>
+                            <x-select name="content" id="content" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Sound-only" {{ $archive->content == 'Sound-only' ? "selected" : "" }}>Sound-only</option>
                                 <option valeu="Videos" {{ $archive->content == 'Videos' ? "selected" : "" }}>Videos</option>
@@ -56,13 +56,13 @@
                         <!-- Date -->
                         <div class="mt-4">
                             <x-label for="date" :value="__('Date')" />
-                            <x-input id="date" class="block mt-1 w-full" type="text" name="date" value="{{ $archive->date }}" :value="old('date')" required autofocus />
+                            <x-input id="date" class="block mt-1 w-full" type="text" name="date" value="{{ $archive->date }}" required autofocus />
                         </div>
 
                         <!-- Season -->
                         <div class="mt-4">
                             <x-label for="season" :value="__('Season')" />
-                            <x-select name="season" id="season" class="block mt-1 w-full" :value="old('season')" required autofocus>
+                            <x-select name="season" id="season" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Spring" {{ $archive->season == 'Spring' ? "selected" : "" }}>Spring</option>
                                 <option valeu="Summer" {{ $archive->season == 'Summer' ? "selected" : "" }}>Summer</option>
@@ -73,8 +73,8 @@
 
                         <!-- Time Of Day -->
                         <div class="mt-4">
-                            <x-label for="time_of_day" :value="__('Time Of Day')" />
-                            <x-select name="time_of_day" id="time_of_day" class="block mt-1 w-full" :value="old('time_of_day')" required autofocus>
+                            <x-label for="time_of_day" :value="__('Time of day')" />
+                            <x-select name="time_of_day" id="time_of_day" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Dawn" {{ $archive->time_of_day == 'Dawn' ? "selected" : "" }}>Dawn</option>
                                 <option valeu="Morning" {{ $archive->time_of_day == 'Morning' ? "selected" : "" }}>Morning</option>
@@ -88,7 +88,7 @@
                         <!-- Type of location -->
                         <div class="mt-4">
                             <x-label for="type_of_location" :value="__('Type of location')" />
-                            <x-select name="type_of_location" id="type_of_location" class="block mt-1 w-full" :value="old('type_of_location')" required autofocus>
+                            <x-select name="type_of_location" id="type_of_location" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Iran" {{ $archive->type_of_location == 'Iran' ? "selected" : "" }}>Iran</option>
                                 <option valeu="Within/beyond geographical border" {{ $archive->type_of_location == 'Within/beyond geographical border' ? "selected" : "" }}>Within/beyond geographical border</option>
@@ -100,19 +100,19 @@
                         <!-- Location -->
                         <div class="mt-4">
                             <x-label for="location" :value="__('Location')" />
-                            <x-input id="location" class="block mt-1 w-full" type="text" name="location" value="{{ $archive->location }}" :value="old('location')" required autofocus />
+                            <x-input id="location" class="block mt-1 w-full" type="text" name="location" value="{{ $archive->location }}" required autofocus />
                         </div>
 
                         <!-- Recordist -->
                         <div class="mt-4">
                             <x-label for="recordist" :value="__('Recordist')" />
-                            <x-input id="recordist" class="block mt-1 w-full" type="text" name="recordist" value="{{ $archive->recordist }}" :value="old('recordist')" required autofocus />
+                            <x-input id="recordist" class="block mt-1 w-full" type="text" name="recordist" value="{{ $archive->recordist }}" required autofocus />
                         </div>
 
                         <!-- Artist -->
                         <div class="mt-4">
                             <x-label for="artist" :value="__('Artist')" />
-                            <x-input id="artist" class="block mt-1 w-full" type="text" name="artist" placeholder="player, singer, etc..." value="{{ $archive->artist }}" :value="old('artist')" required autofocus />
+                            <x-input id="artist" class="block mt-1 w-full" type="text" name="artist" placeholder="player, singer, etc..." value="{{ $archive->artist }}" required autofocus />
                         </div>
 
                         <!-- Length -->
@@ -129,7 +129,6 @@
                                         max="9999"
                                         oninput="amount.value=length.value"
                                         value="{{ $archive->length }}"
-                                        :value="old('length')"
                                         required
                                         autofocus
                                     />
@@ -149,7 +148,7 @@
                         <!-- Device/Recorder -->
                         <div class="mt-4">
                             <x-label for="device_recorder" :value="__('Device/Recorder')" />
-                            <x-select name="device_recorder" id="device_recorder" class="block mt-1 w-full" :value="old('device_recorder')" required autofocus>
+                            <x-select name="device_recorder" id="device_recorder" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Professional Recorders" {{ $archive->device_recorder == 'Professional Recorders' ? "selected" : "" }}>Professional Recorders</option>
                                 <option valeu="Smartphones" {{ $archive->device_recorder == 'Smartphones' ? "selected" : "" }}>Smartphones</option>
@@ -160,7 +159,7 @@
                         <!-- Format/Quality -->
                         <div class="mt-4">
                             <x-label for="format_quality" :value="__('Format/Quality')" />
-                            <x-select name="format_quality" id="format_quality" class="block mt-1 w-full" :value="old('format_quality')" required autofocus>
+                            <x-select name="format_quality" id="format_quality" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="compressed low-quality" {{ $archive->format_quality == 'compressed low-quality' ? "selected" : "" }}>compressed low-quality</option>
                                 <option valeu="compressed high-quality" {{ $archive->format_quality == 'compressed high-quality' ? "selected" : "" }}>compressed high-quality</option>
@@ -171,7 +170,7 @@
                         <!-- Access and License -->
                         <div class="mt-4">
                             <x-label for="access_and_license" :value="__('Access and License')" />
-                            <x-select name="access_and_license" id="access_and_license" class="block mt-1 w-full" :value="old('access_and_license')" required autofocus>
+                            <x-select name="access_and_license" id="access_and_license" class="block mt-1 w-full" required autofocus>
                                 <option>Select</option>
                                 <option valeu="Download directly with the option of donation (via paypal)" {{ $archive->access_and_license == 'Download directly with the option of donation (via paypal)' ? "selected" : "" }}>Download directly with the option of donation (via paypal)</option>
                                 <option valeu="Download after purchase (external link to bandcamp, etc.)" {{ $archive->access_and_license == 'Download after purchase (external link to bandcamp, etc.)' ? "selected" : "" }}>Download after purchase (external link to bandcamp, etc.)</option>
@@ -183,22 +182,18 @@
                         <!-- Tags -->
                         <div class="mt-4">
                             <x-label for="tags" :value="__('Tags')" />
-                            <x-input id="tags" class="block mt-1 w-full" type="text" name="tags" value="{{ $archive->tags }}" :value="old('tags')" required autofocus />
+                            <x-input id="tags" class="block mt-1 w-full" type="text" name="tags" value="{{ $archive->tags }}" required autofocus />
                         </div>
 
                         <!-- Media -->
                         <div class="mt-4">
-                            <x-label for="media" :value="__('Link Media')" />
-                            <x-input id="media" class="block mt-1 w-full" type="text" name="media" placeholder="e.g: https://youtube.com" value="{{ $archive->media }}" :value="old('media')" required autofocus />
+                            <x-label for="media" :value="__('URL Media')" />
+                            <x-input id="media" class="block mt-1 w-full" type="text" name="media" placeholder="e.g: https://youtube.com" value="{{ $archive->media }}" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <x-button type="reset" class="ml-4">
-                                {{ __('Cancel') }}
-                            </x-button>
-
                             <x-button class="ml-4">
-                                {{ __('Add Archive') }}
+                                {{ __('Editar Archive') }}
                             </x-button>
                         </div>
                     </form>

@@ -27,9 +27,9 @@ class ArchiveController extends Controller
      */
     public function index()
     {
-        $archives = Archive::latest()->paginate(5);
+        $archives = Archive::latest()->paginate(15);
 
-        return view('archives.index', compact('archives'));
+        return view('archives.index', ['archives' => $archives]);
     }
 
     /**
@@ -82,7 +82,7 @@ class ArchiveController extends Controller
      */
     public function show(Archive $archive)
     {
-        return view('archives.show', compact($archive));
+        return view('archives.show', ['archive' => $archive]);
     }
 
     /**
@@ -93,7 +93,8 @@ class ArchiveController extends Controller
      */
     public function edit(Archive $archive)
     {
-        return view('archives.show', compact($archive));
+
+        return view('archives.edit', ['archive' => $archive]);
     }
 
     /**
