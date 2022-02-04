@@ -17,6 +17,6 @@ class ArchiveApiController extends Controller
     {
         $archives = Archive::oldest()->paginate(50);
 
-        return Response::json($archives, 200);
+        return response($archives, 200);
     }
 }

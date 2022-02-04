@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArchiveController;
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::resource('users', UserController::class)->middleware(['auth']);
 Route::resource('archives', ArchiveController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
