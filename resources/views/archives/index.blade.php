@@ -43,12 +43,12 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($archives as $archive)
                                 <tr class="transition duration-150 ease-in-out">
-                                    <td align="left" class="px-6 py-4 whitespace-nowrap">{{ $archive->catalogue_number }}</td>
-                                    <td align="left" class="px-6 py-4 whitespace-nowrap">{{ $archive->title }}</td>
-                                    <td align="left" class="px-6 py-4 whitespace-nowrap">{{ $archive->sound_type }}</td>
-                                    <td align="left" class="px-6 py-4 whitespace-nowrap">{{ $archive->content }}</td>
-                                    <td align="left" class="px-6 py-4 whitespace-nowrap">{{ $archive->time_of_day }}</td>
-                                    <td align="right" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <td align="left" scope="row" class="px-6 py-4 whitespace-nowrap">{{ $archive->catalogue_number }}</td>
+                                    <td align="left" scope="row" class="px-6 py-4 whitespace-nowrap">{{ $archive->title }}</td>
+                                    <td align="left" scope="row" class="px-6 py-4 whitespace-nowrap">{{ $archive->sound_type }}</td>
+                                    <td align="left" scope="row" class="px-6 py-4 whitespace-nowrap">{{ $archive->content }}</td>
+                                    <td align="left" scope="row" class="px-6 py-4 whitespace-nowrap">{{ $archive->time_of_day }}</td>
+                                    <td align="right" scope="row" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <form action="{{ route('archives.destroy', $archive->id) }}" method="POST">
                                             <a class="btn btn-info" href="{{ route('archives.show',$archive->id) }}">Show</a>
                                             <a class="btn btn-primary" href="{{ route('archives.edit',$archive->id) }}">Edit</a>

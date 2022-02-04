@@ -29,7 +29,7 @@ class ArchiveController extends Controller
     {
         $archives = Archive::latest()->paginate(15);
 
-        return view('archives.index', ['archives' => $archives]);
+        return view('archives.index', compact('archives'));
     }
 
     /**
