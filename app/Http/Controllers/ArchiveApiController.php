@@ -30,6 +30,6 @@ class ArchiveApiController extends Controller
     {
         $archive = Archive::where('catalogue_number', $id)->first()->get();
 
-        return response($archive, 200);
+        return response($archive[0], 200);
     }
 }
