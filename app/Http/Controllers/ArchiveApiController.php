@@ -28,7 +28,7 @@ class ArchiveApiController extends Controller
      */
     public function show($id)
     {
-        $archive = Archive::where('catalogue_number', $id)->get();
+        $archive = Archive::where('catalogue_number', $id)->first()->get();
 
         return response($archive, 200);
     }
