@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/archives', [ArchiveApiController::class, 'index']);
+Route::get('/archives/{archive_id}', [ArchiveApiController::class, 'show']);

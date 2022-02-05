@@ -19,4 +19,17 @@ class ArchiveApiController extends Controller
 
         return response($archives, 200);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $archive = Archive::findOrFail($id);
+
+        return response($archive, 200);
+    }
 }
