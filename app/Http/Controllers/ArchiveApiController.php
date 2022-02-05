@@ -28,7 +28,7 @@ class ArchiveApiController extends Controller
      */
     public function show($id)
     {
-        $archive = Archive::findOrFail($id);
+        $archive = Archive::find($id);
 
         return response($archive, 200);
     }
