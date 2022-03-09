@@ -41,7 +41,7 @@ class ArchiveApiController extends Controller
      */
     public function search($search)
     {
-        $archives = Archive::search($search)->get();
+        $archives = Archive::where('*', 'like', "%{$search}%")->get();
         dd($archives);
 
         if (count($archives)) {
