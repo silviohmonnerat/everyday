@@ -41,15 +41,13 @@ class ArchiveApiController extends Controller
      */
     public function search($search)
     {
-        dd($search);
         if ($search == '') {
             $archives = Archive::oldest()->paginate(50);
             return response($archives, 200);
         }
 
-        $search = urldecode($search);
-
         $archives = Archive::search($search)->paginate(50);
+        dd($archives);
 
         return Response($archives, 200);
     }
