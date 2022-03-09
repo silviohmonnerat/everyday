@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/archives', [ArchiveApiController::class, 'index']);
 Route::get('/archives/{id}', [ArchiveApiController::class, 'show']);
-Route::get('/archives/search/{search?}', [ArchiveApiController::class, 'search']);
+Route::get('/archives/search/{search?}', [ArchiveApiController::class, 'filterSearch']);
