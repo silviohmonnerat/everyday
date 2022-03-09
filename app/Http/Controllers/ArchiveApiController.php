@@ -41,6 +41,7 @@ class ArchiveApiController extends Controller
      */
     public function filterSearch($search)
     {
+        dd(__LINE__, $search);
         if (!isset($search) || empty($search)) {
             $archives = Archive::oldest()->paginate(50);
             return response($archives, 200);
