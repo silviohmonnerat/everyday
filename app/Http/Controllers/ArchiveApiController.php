@@ -48,7 +48,7 @@ class ArchiveApiController extends Controller
         }
         #dd(__LINE__, $request->search);
         // $archives = Archive::search($request->search)->get();
-        $archives = Archive::where('*', 'like', '%' . $request->search . '%')->get();
+        $archives = Archive::where('title', 'like', '%' . $request->search . '%')->get();
         dd(__LINE__, $archives);
 
         return Response($archives, 200);
