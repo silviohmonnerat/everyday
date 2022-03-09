@@ -41,13 +41,16 @@ class ArchiveApiController extends Controller
      */
     public function search($search)
     {
+        if ($search == '') {
+            $archives = Archive::oldest()->paginate(50);
+            return response($archives, 200);
+        }
+
+        $search = urldecode($search);
+
         $archives = Archive::where('*', 'like', "%{$search}%")->get();
         dd($archives);
 
-        if (count($archives)) {
-         return Response($archives, 200);
-        }
-
-        return response(['message' => 'No Archive not found'], 404);
+        return Response($archives, 200);
     }
 }
