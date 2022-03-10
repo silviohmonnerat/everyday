@@ -46,8 +46,27 @@ class ArchiveApiController extends Controller
             $archives = Archive::oldest()->paginate(50);
             return response($archives, 200);
         }
-        #dd(__LINE__, $request->search);
-        $archives = Archive::where('title', 'LIKE', '%' . $request->search . '%')->paginate(50);
+
+        $archives = Archive::where([
+            'title',
+            'catalogue_number',
+            'content',
+            'sound_type',
+            'date',
+            'season',
+            'time_of_day',
+            'type_of_location',
+            'location',
+            'recordist',
+            'artist',
+            'length',
+            'device_recorder',
+            'format_quality',
+            'access_and_license',
+            'tags',
+            'media'
+        ], 'LIKE', '%' . $request->search . '%')
+                            ->paginate(50);
         #dd(__LINE__, $archives);
 
         return response($archives, 200);
