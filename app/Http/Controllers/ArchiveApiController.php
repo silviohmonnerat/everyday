@@ -48,7 +48,7 @@ class ArchiveApiController extends Controller
         }
         #dd(__LINE__, $request->search);
         $archives = Archive::where('title', 'LIKE', '%' . $request->search . '%')->paginate(50);
-        dd(__LINE__, $archives);
+        #dd(__LINE__, $archives);
 
         return response($archives, 200);
     }
