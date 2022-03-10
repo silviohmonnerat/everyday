@@ -47,25 +47,19 @@ class ArchiveApiController extends Controller
             return response($archives, 200);
         }
 
-        $archives = Archive::where([
-            'title',
-            'catalogue_number',
-            'content',
-            'sound_type',
-            'date',
-            'season',
-            'time_of_day',
-            'type_of_location',
-            'location',
-            'recordist',
-            'artist',
-            'length',
-            'device_recorder',
-            'format_quality',
-            'access_and_license',
-            'tags',
-            'media'
-        ], 'LIKE', '%' . $request->search . '%')
+        $archives = Archive::where('title', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('catalogue_number', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('content', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('sound_type', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('date', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('season', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('time_of_day', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('type_of_location', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('location', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('recordist', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('artist', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('device_recorder', 'LIKE', '%' . $request->search . '%')
+                            ->orWhere('access_and_license', 'LIKE', '%' . $request->search . '%')
                             ->paginate(50);
         #dd(__LINE__, $archives);
 
